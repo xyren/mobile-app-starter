@@ -1,16 +1,11 @@
 
-  <!-- Menu Main Top  -->
-    <ion-menu [content]="content" id='side-menu'>
-        <ion-header class="bg-yellow">
-        	test
-        </ion-header>
-
-<ion-content main-menu>
-          <ion-label small padding>
-            App Version: 2.0034 build 19002
-          </ion-label>
-
-        </ion-content>
-    </ion-menu>
-    <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-    <ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
+<!-- Menu Main Top  -->
+<ion-menu [content]="content" id='side-menu'>
+    <ion-content main-menu>
+      <ion-label small padding>
+        App Version: 2.0034 build 19002
+      </ion-label>
+    </ion-content>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>

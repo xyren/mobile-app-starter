@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,6 +12,8 @@ import Parse from 'parse';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  // @ViewChild(Nav) nav: Nav;
+
   rootPage:any = LoadInitPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -28,7 +30,7 @@ export class MyApp {
       Parse.initialize("myAppId", "masterKey");
       Parse.serverURL = 'http://localhost:1337/parse';
     } else {
-      Parse.initialize("***", "**"); // place your appID and master key here
+      Parse.initialize("9UcrqJaBvZpPO6LKrf2x3ajTaUmYxWNAMCONw1nQ", "Ylfo7XhEXuEl84M1do4oS3tChgbIWqaK6FTj0kjJ");
       Parse.serverURL = 'https://parseapi.back4app.com';
     }
 

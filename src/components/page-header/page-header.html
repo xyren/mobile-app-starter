@@ -1,4 +1,11 @@
-<!-- Generated template for the PageHeaderComponent component -->
-<div>
-  {{text}}
+
+<div class="header {{color}}" padding-top>
+  <div *ngIf="spacer" padding>
+  	<br><br>
+  </div>
+  <button *ngIf="hasDismiss" ion-button (click)="dismiss()" class="text-no-shadow">
+    <ion-icon name={{icon}}></ion-icon>
+  </button>
+  <h1 padding-horizontal *ngIf="title" class="text-no-shadow">{{title}}</h1>
+  <h2 padding-horizontal *ngIf="subtitle" class="text-size-big-1">{{subtitle}}</h2>
 </div>

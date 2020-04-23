@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the PageHeaderComponent component.
@@ -12,11 +13,18 @@ import { Component } from '@angular/core';
 })
 export class PageHeaderComponent {
 
-  text: string;
+  @Input('spacer') spacer: boolean = true;
+  @Input('color') color: string = 'text-all-black';
+  @Input('title') title: string;
+  @Input('hasDismiss') hasDismiss: boolean = false;
+  @Input('icon') icon: string = 'close';
+  @Input('subtitle') subtitle: string;
 
-  constructor() {
+  constructor(public viewCtrl: ViewController,) {
     console.log('Hello PageHeaderComponent Component');
-    this.text = 'Hello World';
   }
 
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

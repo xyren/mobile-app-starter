@@ -8,18 +8,40 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 
 import { LoadInitPage } from '../pages/common/load-init/load-init';
-import { HomePage } from '../pages/common/home/home';
 import { WelcomePage } from '../pages/common/welcome/welcome';
+import { LoginPage } from '../pages/common/login/login';
+import { RegisterInvitationPage } from '../pages/common/register-invitation/register-invitation';
+import { ForgotPasswordPage } from '../pages/common/forgot-password/forgot-password';
 
+// Private pages - user should be logged-in
+import { HomePage } from '../pages/common/private/home/home';
+import { LogoutPage } from '../pages/common/private/logout/logout';
+
+// Administrative Pages
+
+
+// Custom Components
+import { MainMenuComponent } from '../components/main-menu/main-menu';
+import { PageHeaderComponent } from '../components/page-header/page-header';
+
+// Services
 import { CommonServiceProvider } from '../providers/common-service/common-service';
 
 @NgModule({
   declarations: [
     MyApp,
     
-    HomePage,
     LoadInitPage,
     WelcomePage,
+    LoginPage,
+    RegisterInvitationPage,
+    ForgotPasswordPage,
+
+    HomePage,
+    LogoutPage,
+
+    MainMenuComponent,
+    PageHeaderComponent,
 
   ],
   imports: [
@@ -31,9 +53,14 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
   entryComponents: [
     MyApp,
 
-    HomePage,
     LoadInitPage,
     WelcomePage,
+    LoginPage,
+    RegisterInvitationPage,
+    ForgotPasswordPage,
+
+    HomePage,
+    LogoutPage,
 
   ],
   providers: [

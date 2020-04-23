@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
 import { WelcomePage } from '../welcome/welcome';
+import { HomePage } from '../private/home/home';
 
 import Parse from 'parse';
 /**
@@ -43,6 +43,7 @@ export class LoadInitPage {
       }
     });
 
+    // check if user is logged-in
     Parse.User.currentAsync().then(user => {
       if (user === undefined || user === null) {
         setTimeout(() => {

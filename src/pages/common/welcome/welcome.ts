@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+
+import { LoginPage } from '../login/login';
+import { RegisterInvitationPage } from '../register-invitation/register-invitation';
 
 /**
  * Generated class for the WelcomePage page.
@@ -15,11 +18,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
+  }
+
+  registerInvitation() {
+  	const modal = this.modalCtrl.create(RegisterInvitationPage);
+    modal.present();
+  }
+
+  login() {
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

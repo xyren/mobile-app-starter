@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { ToastController, ViewController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 import Parse from 'parse';
 
@@ -20,13 +20,19 @@ export class CommonServiceProvider {
 
   /**
    * Email validation
-   * @return {boolean} [description]
+   * @param  {string}   email
+   * @return {boolean}
    */
-  validEmail (email) {
+  validEmail (email: string) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   }
 
-  validUsername(username) {
+  /**
+   * Username validation
+   * @param  {string}   username
+   * @return {boolean}
+   */
+  validUsername(username: string) {
     return /^[0-9a-zA-Z]+$/.test(username);
   }
 

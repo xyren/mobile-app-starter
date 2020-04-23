@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 import { WelcomePage } from '../welcome/welcome';
-import { HomePage } from '../private/home/home';
+import { HomePage } from '../../private/home/home';
 
 import Parse from 'parse';
 /**

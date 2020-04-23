@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { ToastController } from 'ionic-angular';
+import { ToastController, ViewController } from 'ionic-angular';
 
 import Parse from 'parse';
 
@@ -14,10 +14,21 @@ import Parse from 'parse';
 @Injectable()
 export class CommonServiceProvider {
 
-  constructor(public toastCtrl: ToastController) {
+  constructor(public toastCtrl: ToastController,) {
     console.log('Hello CommonServiceProvider Provider');
   }
 
+  /**
+   * Email validation
+   * @return {boolean} [description]
+   */
+  validEmail (email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  validUsername(username) {
+    return /^[0-9a-zA-Z]+$/.test(username);
+  }
 
   toastSuccess(msg: string = 'Request successfully process.', duration: number = 1500) {
   	return this.toastCtrl.create({

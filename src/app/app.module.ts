@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { Configuration } from '../config';
 
 import { LoadInitPage } from '../pages/common/load-init/load-init';
 import { WelcomePage } from '../pages/common/welcome/welcome';
@@ -73,7 +74,8 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CommonServiceProvider
+    CommonServiceProvider,
+    Configuration,
   ]
 })
 export class AppModule {}

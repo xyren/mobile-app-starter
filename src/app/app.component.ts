@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoadInitPage } from '../pages/common/load-init/load-init';
 
 import Parse from 'parse';
+import { Configuration } from '../config';
 
 
 @Component({
@@ -14,14 +15,15 @@ import Parse from 'parse';
 export class MyApp {
 
   rootPage:any = LoadInitPage;
+  
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private config: Configuration) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-
 
       // if(window.ParsePushPlugin){
       //     ParsePushPlugin.getInstallationId(function(id) {
@@ -57,15 +59,16 @@ export class MyApp {
 
     });
 
+    // configuration values
+    const env = this.config.ENV;
+    const parseConfig = this.config.parse[env];
+
     // initialize Parse connection
-    const deployLocal = true;
-    if (deployLocal ){
-      Parse.initialize("myAppId", "masterKey");
-      Parse.serverURL = 'http://localhost:1337/parse';
-    } else {
-      Parse.initialize("9UcrqJaBvZpPO6LKrf2x3ajTaUmYxWNAMCONw1nQ", "Ylfo7XhEXuEl84M1do4oS3tChgbIWqaK6FTj0kjJ");
-      Parse.serverURL = 'https://parseapi.back4app.com';
-    }
+    Parse.initialize( parseConfig.appId , parseConfig.masterKey );
+    Parse.serverURL = parseConfig.serverURL;
+
+    console.log('Application ENV: ' + env);
+    console.log('Parse Server: ' + parseConfig.serverURL);
 
   }
 }

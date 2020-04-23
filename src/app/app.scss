@@ -95,7 +95,7 @@ ion-footer {
 	  &-black {
 	  	background-color: #000;
 	  	&-alpha { background-color: rgba(0,0,0,0.4) !important; }
-	  	&-alpha-1 { background-color: rgba(0,0,0,0.8) !important; }
+	  	&-alpha-1 { background-color: rgba(0,0,0,0.9) !important; }
 	  }
 	}
 	&-clear { background-color: transparent; background-image: none; } 
@@ -239,7 +239,7 @@ ion-footer {
   h1 {
     font-size: 2.7em;
     @extend .text-shadow;
-    @extend .text-weight-bold;
+    @extend .text-weight-medium;
   }
 }
 

@@ -14,8 +14,9 @@ import { RegisterInvitationPage } from '../pages/common/register-invitation/regi
 import { ForgotPasswordPage } from '../pages/common/forgot-password/forgot-password';
 
 // Private pages - user should be logged-in
-import { HomePage } from '../pages/common/private/home/home';
-import { LogoutPage } from '../pages/common/private/logout/logout';
+import { HomePage } from '../pages/private/home/home';
+import { LogoutPage } from '../pages/private/logout/logout';
+import { UserProfilePage } from '../pages/private/user-profile/user-profile';
 
 // Administrative Pages
 
@@ -39,6 +40,7 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
 
     HomePage,
     LogoutPage,
+    UserProfilePage,
 
     MainMenuComponent,
     PageHeaderComponent,
@@ -61,6 +63,7 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
 
     HomePage,
     LogoutPage,
+    UserProfilePage,
 
   ],
   providers: [

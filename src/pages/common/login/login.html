@@ -1,0 +1,36 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding-vertical class="background-color-black-alpha background-cover" style="background-image: url(/assets/images/background/28.jpg);">
+  <div class="header text-all-white">
+    <button ion-button (click)="welcome()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+    <h1 padding>Login</h1>
+  </div>
+</ion-content>
+
+<ion-footer padding>
+  
+  <div padding>
+
+    <ion-input [(ngModel)]="username" placeholder="username" class="background-color-white border-round box-shadow padding-medium text-size-big-1" text-lowercase></ion-input>
+
+    <ion-input [(ngModel)]="password" placeholder="password" class="background-color-white border-round box-shadow padding-medium text-size-big-1" type="password" margin-top (submit)="signIn()"></ion-input>
+
+    <button ion-button margin-vertical type="submit" block class="button-medium no-box-shadow" round (click)="signIn()">
+      SIGN IN
+    </button>
+
+    <p text-center padding class="text-shadow text-all-white">
+      <span padding block margin (click)="forgotpassword()" >
+        Forgot you password? <u class="text-color-primary">Request Now</u>
+      </span>
+    </p>
+  </div>
+
+</ion-footer>

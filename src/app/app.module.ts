@@ -17,6 +17,7 @@ import { ForgotPasswordPage } from '../pages/common/forgot-password/forgot-passw
 import { HomePage } from '../pages/private/home/home';
 import { LogoutPage } from '../pages/private/logout/logout';
 import { UserProfilePage } from '../pages/private/user-profile/user-profile';
+import { ChangePasswordPage } from '../pages/private/change-password/change-password';
 
 // Administrative Pages
 
@@ -41,6 +42,7 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     HomePage,
     LogoutPage,
     UserProfilePage,
+    ChangePasswordPage,
 
     MainMenuComponent,
     PageHeaderComponent,
@@ -64,6 +66,7 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     HomePage,
     LogoutPage,
     UserProfilePage,
+    ChangePasswordPage,
 
   ],
   providers: [

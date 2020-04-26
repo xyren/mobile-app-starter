@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
-import { ToastController } from 'ionic-angular';
+import { ToastController, Events } from 'ionic-angular';
 
 import Parse from 'parse';
 
@@ -14,8 +14,12 @@ import Parse from 'parse';
 @Injectable()
 export class CommonServiceProvider {
 
-  constructor(public toastCtrl: ToastController,) {
+  constructor(public toastCtrl: ToastController, public events: Events, public storage: Storage) {
     console.log('Hello CommonServiceProvider Provider');
+
+    // this.events.subscribe('user:loggedIn', (user) => {
+    //   this.storage.set('user', user);
+    // });
   }
 
   /**
@@ -59,6 +63,64 @@ export class CommonServiceProvider {
     	return this.toastError("Couldn't even connect to the server!");
     
     return this.toastError(error.message);
+  }
+
+  initializeActiveUser(request) {
+    this.storage.set('user',{
+      'id': request.id,
+      'username': request.get('username'),
+      'role': request.get('role'),
+      'email': request.get('email'),
+      'session': request,
+    });
+  }
+
+  inSyncError(key: string) {
+    let syncError = this.storage.get('sync-error');
+    return syncError.then((val) => {
+      console.log('search in error sync');
+      if (val == null){
+        return false;
+      }
+      // to be valid array
+      let lists = val.split(';');
+
+      console.log('error sync list', lists);
+      return lists.includes(key, 0);
+    });
+  }
+
+  SaveSyncError(key: string) {
+    let syncError = this.storage.get('sync-error');
+    syncError.then((val) => {
+
+      if(val == null){
+        val = '';
+      }
+      let lists = val.split(';');
+      if ( lists.includes(key, 0) == false) {
+        lists.push(key);
+      }
+      console.log('error sync list - updated');
+      this.storage.set('sync-error', lists.join(';'));
+    });
+  }
+
+  RemoveSyncError(key: string) {
+    let syncError = this.storage.get('sync-error');
+    syncError.then((val) => {
+
+      if(val == null){
+        val = '';
+      }
+      let lists = val.split(';');
+      let index = lists.indexOf(key);
+      if ( index > -1 ) {
+        lists.splice(index, 1);
+        console.log('error sync list - removed');
+      }
+      this.storage.set('sync-error', lists.join(';'));
+    });
   }
 
   getAllAccess() {

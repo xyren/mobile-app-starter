@@ -37,16 +37,18 @@ Private Access Level (User should logged-in)
  	-- 
 
 Administrative Access Level
-* User Roles
+* User  (complete)
 	- Add User Role
 	- Edit User Role
 	- Delete User Role
 	- List User Role
 	** Auto Sync if Error sync found
 
-* Invitations
+* Invitations (complete)
 	- Send Invitation
 	- Resend Invitation
+	- Edit Invitation
+	- Delete Invitation
 
 * Users
 	- Users List

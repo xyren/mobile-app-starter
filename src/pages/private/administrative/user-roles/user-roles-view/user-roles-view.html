@@ -1,0 +1,37 @@
+<!--
+  Generated template for the UserRolesViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+
+  <page-header
+    [title] = "'View User Roles'"
+    [subtitle] = "'List of permissions for <b>'+ rolename +'</b>' "
+    [hasDismiss] = "true"
+    [icon] = "'ios-arrow-back'"
+    [spacer] = "false"
+    [color] = "'text-all-black'"
+  ></page-header>
+
+  <ion-list *ngFor="let access of roleAllAccess" class="box-shadow">
+    <ion-item-divider class="background-color-gray-light" no-lines margin-top sticky>
+      {{access?.name || 'N/A'}}
+    </ion-item-divider>
+    <ion-item default-item box-shadow no-lines *ngFor="let list of access.options" class="padding-medium font-big">
+      <div *ngIf="roleAccess.indexOf(list.value) !== -1 ">
+        <span>{{list?.name || 'N/A'}}</span>
+        <p class="text-color-black text-line-height-2" no-margin>{{list?.subtitle || ''}}</p>
+      </div>
+      <div *ngIf="roleAccess.indexOf(list.value) === -1 ">
+        <span class="text-color-gray-light">{{list?.name || 'N/A'}}</span>
+        <p class="text-color-gray-light text-line-height-2" no-margin>{{list?.subtitle || ''}}</p>
+      </div>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+

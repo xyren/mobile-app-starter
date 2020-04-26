@@ -1,0 +1,64 @@
+<!--
+  Generated template for the UserRolesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+
+  <page-header
+    [title] = "'User Roles'"
+    [subtitle] = "'Types of account for permission access'"
+    [hasDismiss] = "true"
+    [icon] = "'close'"
+    [spacer] = "false"
+    [color] = "'text-all-black'"
+  ></page-header>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.5" pullMax="200" class="background-color-gray text-all-white">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingtext="Pull to Sync"
+      refreshingSpinner="dots"
+      refreshingText="Syncing in progress"
+    >  
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  <div *ngIf="roleAccess == null" class="text-color-gray" padding>
+    Pull down to sync data from server
+  </div>
+  
+  <div *ngIf="roleAccess.length() == 0" class="text-color-gray" padding>
+    No Data available
+  </div>
+  
+  <div *ngIf="roleAccess != null">
+    <ion-list class="box-shadow">
+      
+      <ion-item-sliding *ngFor="let item of roleAccess">
+        <ion-item (click)="viewRole(item)">
+          <h2 text-capitalize>{{item.name}}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="editRole(item)">
+            <ion-icon name="ios-create"></ion-icon>
+            Edit
+          </button>
+          <button ion-button color="danger" (click)="deleteRole(item)">
+            <ion-icon name="ios-trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ion-list>
+  </div>
+
+</ion-content>
+
+<ion-footer class="background-color-white-alpha" padding>
+	<button ion-button type="submit" block class="button-medium no-box-shadow" round (click)="addRole()">
+    ADD NEW ROLE
+  </button>
+</ion-footer>

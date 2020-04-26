@@ -106,11 +106,9 @@ export class UserRolesEditPage {
 			console.log('User Role successfully update.', resp);
 
 			loading.dismiss();
+      this.events.publish('admin:role');
+      this.viewCtrl.dismiss();
 			let toast = this.service.toastSuccess('User Role successfully update.');
-      toast.onDidDismiss(() => {
-        this.events.publish('admin:role');
-        this.viewCtrl.dismiss();
-      });
   		toast.present();
     }, err => {
     	
@@ -119,31 +117,6 @@ export class UserRolesEditPage {
         return this.service.toastErrorSubmit(err);
     	});
     });
-
-
-    // const RoleAccess = Parse.Object.extend("RoleAccess");
-    // const role = new RoleAccess();
-    // role.set('roleId', this.roleId);
-    // role.set('name', this.rolename.toLowerCase());
-    // role.set('access', filteredAccess.join(';'));
-    // role.set('status', true);
-    // role.save()
-    // .then((role) => {
-    //   loading.dismiss();
-    //   let toast = this.service.toastSuccess('User Role successfully update.');
-    //   toast.onDidDismiss(() => {
-    //     this.events.publish('admin:role');
-    //     this.viewCtrl.dismiss();
-    //   });
-    //   toast.present();
-    // }, (error) => {
-    //   loading.dismiss();
-    //   loading.onDidDismiss(() => {        
-    //     return this.service.toastErrorSubmit(error);
-    //   });
-    // });
-    
-    
 
   }
 

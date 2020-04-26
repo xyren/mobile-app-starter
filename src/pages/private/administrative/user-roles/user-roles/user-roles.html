@@ -29,11 +29,17 @@
     Pull down to sync data from server
   </div>
   
-  <div *ngIf="roleAccess.length() == 0" class="text-color-gray" padding>
+  <div *ngIf="roleAccess == null" class="text-color-gray" padding>
     No Data available
   </div>
   
   <div *ngIf="roleAccess != null">
+
+
+    <div *ngIf="roleAccess.length == 0" class="text-color-gray" padding>
+      No Data available
+    </div>
+
     <ion-list class="box-shadow">
       
       <ion-item-sliding *ngFor="let item of roleAccess">
@@ -43,11 +49,9 @@
         <ion-item-options side="right">
           <button ion-button color="primary" (click)="editRole(item)">
             <ion-icon name="ios-create"></ion-icon>
-            Edit
           </button>
           <button ion-button color="danger" (click)="deleteRole(item)">
             <ion-icon name="ios-trash"></ion-icon>
-            Delete
           </button>
         </ion-item-options>
       </ion-item-sliding>

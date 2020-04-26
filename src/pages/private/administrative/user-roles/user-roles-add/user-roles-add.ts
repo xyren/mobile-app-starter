@@ -81,11 +81,9 @@ export class UserRolesAddPage {
     role.save()
     .then((role) => {
       loading.dismiss();
+      this.events.publish('admin:role');
+      this.viewCtrl.dismiss();
       let toast = this.service.toastSuccess('New User Role successfully saved.');
-      toast.onDidDismiss(() => {
-        this.events.publish('admin:role');
-        this.viewCtrl.dismiss();
-      });
       toast.present();
     }, (error) => {
       loading.dismiss();

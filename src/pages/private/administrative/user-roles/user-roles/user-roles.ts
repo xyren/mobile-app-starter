@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, Events, LoadingController } from 'ionic-angular';
 
 import { UserRolesAddPage } from '../user-roles-add/user-roles-add';
 import { UserRolesEditPage } from '../user-roles-edit/user-roles-edit';
 import { UserRolesViewPage } from '../user-roles-view/user-roles-view';
+import { UserRolesDeletePage } from '../user-roles-delete/user-roles-delete';
 
 
 import { Storage } from '@ionic/storage';
@@ -32,6 +33,7 @@ export class UserRolesPage {
   	public navParams: NavParams, 
     public modalCtrl: ModalController,
     private alertCtrl: AlertController,
+    public loadingController: LoadingController,
   	public events: Events,
     public storage: Storage,
   	public service: CommonServiceProvider
@@ -144,31 +146,6 @@ export class UserRolesPage {
     });
   }
 
-  processDeleteRequest(item) {
-    const RoleAccess = Parse.Object.extend('RoleAccess');
-    const query = new Parse.Query(RoleAccess);
-    console.log
-    query.equalTo('objectId', item.id );
-    return query.find().then(results => {
-      console.log('resolve pending delete request');
-      console.log(results);
-      if ( results.length > 0 ) {
-        // delete request to server
-        results[0].destroy({});
-        let toast = this.service.toastSuccess('Role successfully deleted.');
-        toast.present();
-      } else {
-        this.service.toastError('Cant find the role data.');
-        return false;
-      }
-    })
-    .catch(error => {
-      console.log('sync error delete handler')
-      this.service.toastErrorSubmit(error);
-      return false;
-    });
-  }
-
   addRole() {
     const modal = this.modalCtrl.create( UserRolesAddPage );
     modal.present();
@@ -206,22 +183,8 @@ export class UserRolesPage {
           text: 'Delete',
           handler: () => {
             console.log('Delete confirmed');
-
-            // sync data from server
-            const deleteReq = new Promise((resolve, reject) => {
-              resolve(this.processDeleteRequest(item));
-            });
-
-            // process to be valid roles data
-            deleteReq.then((val) => {
-              console.log('returned', val);
-              // force sync
-              return this.initializePage(true, false);
-
-            }).catch(error => {
-              // error data-delete retrieve
-              return;
-            });
+            const modal = this.modalCtrl.create( UserRolesDeletePage, {delete: item });
+            modal.present();
           }
         }
       ]

@@ -4,7 +4,7 @@ Ionic V3 and Parse-Server
 This project Tied-up with Parse-Server-Local
 
 
-# Configuration Parse Server Connection
+## Configuration Parse Server Connection
 ```
 file: src/config.ts
 ```
@@ -21,6 +21,7 @@ public SUPERADMIN: any = {
 }
 ```
 
+## Features
 Public Access
 * Welcome Page (Landing Page)
 * Loading Initialization Handler Page
@@ -32,9 +33,9 @@ Public Access
 Private Access Level (User should logged-in)
 * Change Password
 * User Profile
-	-- Edit Profile
-	-- Upload Profile Photo
- 	-- 
+	- Edit Profile
+	- Upload Profile Photo
+ 	- 
 
 Administrative Access Level
 * User  (complete)
@@ -42,13 +43,14 @@ Administrative Access Level
 	- Edit User Role
 	- Delete User Role
 	- List User Role
-	** Auto Sync if Error sync found
+	- ** Auto Sync if Error sync found
 
 * Invitations (complete)
 	- Send Invitation
 	- Resend Invitation
 	- Edit Invitation
 	- Delete Invitation
+	- ** Searchable Data
 
 * Users
 	- Users List

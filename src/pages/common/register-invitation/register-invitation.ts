@@ -27,7 +27,7 @@ export class RegisterInvitationPage {
   confirmpassword: string;
   fullname: string;
   position: string;
-  role: number = 0;
+  role: string = '0';
 
   invalidCode: boolean;
   registrationForm: boolean;
@@ -37,13 +37,12 @@ export class RegisterInvitationPage {
   	public navParams: NavParams, 
 		public loadingController: LoadingController,
 		public service: CommonServiceProvider
-  	) {
-
-  	this.initializePage();
+  	) {	
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterInvitationPage');
+    this.initializePage();
   }
 
   initializePage() {
@@ -91,7 +90,7 @@ export class RegisterInvitationPage {
         this.role = result.get('role');
 
         if (!this.role || this.role == undefined ) {
-          this.role = 0;
+          this.role = '0';
         }
 
       } else {

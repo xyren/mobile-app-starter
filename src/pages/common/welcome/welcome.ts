@@ -31,7 +31,7 @@ export class WelcomePage {
   }
 
   login() {
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(LoginPage, {}, {animate: true, animation: 'fadeInRight'});
   }
 
 }

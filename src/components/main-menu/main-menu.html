@@ -1,4 +1,15 @@
-<!-- Generated template for the MainMenuComponent component -->
-<div>
-  {{text}}
-</div>
+
+<ion-grid padding-horizontal>
+	<ion-row>
+		<ion-col col-2 text-center no-padding *ngFor="let p of pages">
+      <button ion-button no-padding (click)="viewPage(p)" *ngIf="p.title != active" class="no-box-shadow {{shadowClass}} text-size-big-3 {{menuColor}} background-clear button button-md button-default button-default-md">
+        <ion-icon name={{p.icon}}></ion-icon>
+      </button>
+      <button ion-button no-padding (click)="viewPage(p)" *ngIf="p.title == active" class="no-box-shadow {{shadowClass}} text-size-big-3 text-color-primary background-clear button button-md button-default button-default-md">
+        <ion-icon name={{p.icon}}></ion-icon>
+      </button>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+

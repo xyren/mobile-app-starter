@@ -1,22 +1,15 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      HOMEPAGE
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content class="background-color-gray-dark">
 
-<ion-content padding class="background-color-gray-dark">
+  <div class="full-width background-menu position-absolute position-top">
+    <main-menu [active]="'Profile'" [menuColor]="'text-white'"></main-menu>x
+  </div>
+
+  <main-menu [active]="'Home'" [menuColor]="'text-white'"></main-menu>
+
   The world is your oyster.
-  <p class="text-color-gray text-shadow">
+  <p class="text-color-gray text-shadow ">
     If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
   </p>
 
-  <button ion-button (click)="profile()" >profile </button>
-  <button ion-button (click)="changePassword()" >change password </button>
 
-
-
-
-  <button ion-button (click)="logout()" >Logout </button>
 </ion-content>

@@ -5,8 +5,13 @@ import { LoadInitPage } from '../load-init/load-init';
 import { WelcomePage } from '../welcome/welcome';
 import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 
+import { InstallationPage } from '../../installation/installation';
+
+import { Storage } from '@ionic/storage';
 import Parse from 'parse';
 import { CommonServiceProvider } from '../../../providers/common-service/common-service';
+
+import { Configuration } from '../../../config';
 
 /**
  * Generated class for the LoginPage page.
@@ -30,6 +35,8 @@ export class LoginPage {
   	public navParams: NavParams,
   	public modalCtrl: ModalController,
   	public loadingController: LoadingController,
+    public storage: Storage,
+    private config: Configuration, 
   	public service: CommonServiceProvider
   	) {
   }
@@ -39,7 +46,7 @@ export class LoginPage {
   }
 
   welcome() {
-    this.navCtrl.setRoot(WelcomePage);
+    this.navCtrl.setRoot(WelcomePage, {}, {animate: true, animation: 'fadeInLeft'});
   }
 
   forgotpassword() {
@@ -54,16 +61,36 @@ export class LoginPage {
 	  	return this.service.toastError();
 	  }
 
-  	let loading = this.loadingController.create({content: "Please wait..."});
-   	loading.present();
+    // loading modal
+    let loading = this.loadingController.create({content: "Please wait..."});
+    loading.present();
 
+    // superadmin installation
+    const userAdmin = this.config.SUPERADMIN;
+
+    console.log(userAdmin, this.username, this.password)
+    if ((this.username == userAdmin.username ) && (this.password == userAdmin.password )) {
+      loading.dismiss();
+      let toast = this.service.toastSuccess('Super-Admin Logged-in successfully');
+      toast.onDidDismiss(() => {
+        console.log('Dismissed toast');
+        this.navCtrl.setRoot(InstallationPage)
+      });
+      toast.present();
+      return;
+    }
+
+    // verify in parse server request
  		Parse.User.logIn(this.username.toLowerCase(), this.password).then((resp) => {
       console.log('Logged in successfully', resp);
 
+      // save current user data to local storage
+      this.service.initializeActiveUser(resp);
+
       let toast = this.service.toastSuccess('Logged-in successfully');
+      loading.dismiss();
 		  toast.onDidDismiss(() => {
 		    console.log('Dismissed toast');
-		    loading.dismiss();
 		    this.navCtrl.setRoot(LoadInitPage)
 		  });
   		toast.present();

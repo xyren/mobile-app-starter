@@ -14,10 +14,14 @@ export class Configuration {
 			serverURL: 'http://localhost:1337/parse',
 		},
 		production: {
-			appId: '*******',
-			masterKey: '******',
+			appId: '9UcrqJaBvZpPO6LKrf2x3ajTaUmYxWNAMCONw1nQ',
+			masterKey: 'Ylfo7XhEXuEl84M1do4oS3tChgbIWqaK6FTj0kjJ',
 			serverURL: 'https://parseapi.back4app.com',
 		},
+	}
+	public SUPERADMIN: any = {
+		username: 'superadmin',
+		password: 'developer'
 	}
 
 }

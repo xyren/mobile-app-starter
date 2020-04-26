@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { Configuration } from '../config';
 
+import { InstallationPage } from '../pages/installation/installation';
 import { LoadInitPage } from '../pages/common/load-init/load-init';
 import { WelcomePage } from '../pages/common/welcome/welcome';
 import { LoginPage } from '../pages/common/login/login';
@@ -18,9 +19,24 @@ import { ForgotPasswordPage } from '../pages/common/forgot-password/forgot-passw
 import { HomePage } from '../pages/private/home/home';
 import { LogoutPage } from '../pages/private/logout/logout';
 import { UserProfilePage } from '../pages/private/user-profile/user-profile';
+import { UserProfileEditPage } from '../pages/private/user-profile-edit/user-profile-edit';
 import { ChangePasswordPage } from '../pages/private/change-password/change-password';
+import { AdminMenuPage } from '../pages/private/admin-menu/admin-menu';
 
 // Administrative Pages
+import { UserRolesPage } from '../pages/private/administrative/user-roles/user-roles/user-roles';
+import { UserRolesAddPage } from '../pages/private/administrative/user-roles/user-roles-add/user-roles-add';
+import { UserRolesEditPage } from '../pages/private/administrative/user-roles/user-roles-edit/user-roles-edit';
+import { UserRolesViewPage } from '../pages/private/administrative/user-roles/user-roles-view/user-roles-view';
+import { UserRolesDeletePage } from '../pages/private/administrative/user-roles/user-roles-delete/user-roles-delete';
+
+import { InvitationsPage } from '../pages/private/administrative/invitations/invitations/invitations';
+import { InvitationSendPage } from '../pages/private/administrative/invitations/invitation-send/invitation-send';
+import { InvitationEditPage } from '../pages/private/administrative/invitations/invitation-edit/invitation-edit';
+import { InvitationDeletePage } from '../pages/private/administrative/invitations/invitation-delete/invitation-delete';
+
+import { UserListPage } from '../pages/private/administrative/user/user-list/user-list';
+import { UserViewPage } from '../pages/private/administrative/user/user-view/user-view';
 
 
 // Custom Components
@@ -35,6 +51,8 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     MyApp,
     
     LoadInitPage,
+    InstallationPage,
+
     WelcomePage,
     LoginPage,
     RegisterInvitationPage,
@@ -44,6 +62,22 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     LogoutPage,
     UserProfilePage,
     ChangePasswordPage,
+    UserProfileEditPage,
+    AdminMenuPage,
+
+    UserRolesPage,
+    UserRolesAddPage,
+    UserRolesEditPage,
+    UserRolesViewPage,
+    UserRolesDeletePage,
+
+    InvitationsPage,
+    InvitationSendPage,
+    InvitationEditPage,
+    InvitationDeletePage,
+
+    UserListPage,
+    UserViewPage,
 
     MainMenuComponent,
     PageHeaderComponent,
@@ -59,6 +93,8 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     MyApp,
 
     LoadInitPage,
+    InstallationPage,
+    
     WelcomePage,
     LoginPage,
     RegisterInvitationPage,
@@ -68,6 +104,22 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
     LogoutPage,
     UserProfilePage,
     ChangePasswordPage,
+    UserProfileEditPage,
+    AdminMenuPage,
+
+    UserRolesPage,
+    UserRolesAddPage,
+    UserRolesEditPage,
+    UserRolesViewPage,
+    UserRolesDeletePage,
+    
+    InvitationsPage,
+    InvitationSendPage,
+    InvitationEditPage,
+    InvitationDeletePage,
+
+    UserListPage,
+    UserViewPage,
 
   ],
   providers: [

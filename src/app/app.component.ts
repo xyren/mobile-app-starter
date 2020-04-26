@@ -15,9 +15,13 @@ import { Configuration } from '../config';
 export class MyApp {
 
   rootPage:any = LoadInitPage;
-  
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private config: Configuration) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    private config: Configuration, 
+    ) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

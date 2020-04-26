@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../../common/login/login';
-import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
+import { Storage } from '@ionic/storage';
+import { CommonServiceProvider } from '../../../providers/common-service/common-service';
 
 import Parse from 'parse';
 
@@ -21,15 +22,20 @@ import Parse from 'parse';
 })
 export class LogoutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: CommonServiceProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public storage: Storage,
+    public service: CommonServiceProvider
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogoutPage');
-
-    Parse.User.logOut().then((resp) => {
-
-      console.log('Logged out successfully', resp);
+    // remove current user info
+    this.storage.remove('user');
+    Parse.User.logOut().then(() => {
+      console.log('Logged out successfully');
       this.navCtrl.setRoot(LoginPage);
     }, err => {
       console.log('Error logging out', err);

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+   
+  <div class="full-width background-menu position-absolute position-top">
+    <main-menu [active]="'Profile'" [menuColor]="'text-white'"></main-menu>
+  </div>
+
+  <div class="background-cover background-position-relative full-height" style="background-image: url(/assets/images/avatar/pretty.jpg);">
+  
+    <div padding class="background-profile full-height">
+      
+      <div class="full-width position-absolute position-bottom position-left text-all-white padding-large">
+
+				<h1 class="text-color-white text-size-big-4 text-weight-thin text-shadow" no-margin no-padding>
+					Jennifer Rizalyn Macapagal
+				</h1>
+
+        <p class="text-color-white text-shadow text-line-height-2 text-size-big-1" margin-top no-padding>
+          <ion-icon name="ios-briefcase"></ion-icon>
+          Senior Software Developer<br>
+
+          <ion-icon name="ios-pin"></ion-icon>
+          Makati City, PH<br>
+
+          <ion-icon name="ios-contacts"></ion-icon>
+          Chinese<br>
+        </p>
+
+				<ion-grid padding-horizontal margin-bottom>
+          <ion-row class="text-all-white text-size-big-1">
+            <ion-col col-6 text-right>
+              <div text-center float-right padding-right>
+                <h1 class="text-size-big-2" no-margin>2,334</h1>
+                <span class="text-color-gray text-size-small-1" >Followers</span>
+            </div>
+            </ion-col>
+            <ion-col col-6 text-left>
+              <div text-center float-left padding-left>
+                <h1 class="text-size-big-2" no-margin>345</h1>
+                <span class="text-color-gray" >Post</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+		    <button ion-button margin-rop type="submit" block class="button-medium no-box-shadow" round (click)="editProfile()">
+		      <ion-icon name="ios-settings"></ion-icon>
+		      ACCOUNT SETTINGS
+		    </button>
+
+        <button *ngIf="other_profile" ion-button margin-top block class="border medium alpha-bg-white text-yellow no-box-shadow" round (click)="editProfile()">
+          <ion-icon name="heart-outline"></ion-icon>
+          FOLLOW
+        </button>
+    	</div>
+
+    </div>
+  </div>
+</ion-content>

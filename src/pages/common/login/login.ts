@@ -74,9 +74,10 @@ export class LoginPage {
       let toast = this.service.toastSuccess('Super-Admin Logged-in successfully');
       toast.onDidDismiss(() => {
         console.log('Dismissed toast');
-        this.navCtrl.setRoot(InstallationPage)
+        this.navCtrl.setRoot(InstallationPage);
       });
       toast.present();
+
       return;
     }
 
@@ -89,11 +90,8 @@ export class LoginPage {
 
       let toast = this.service.toastSuccess('Logged-in successfully');
       loading.dismiss();
-		  toast.onDidDismiss(() => {
-		    console.log('Dismissed toast');
-		    this.navCtrl.setRoot(LoadInitPage)
-		  });
   		toast.present();
+      this.navCtrl.setRoot(LoadInitPage)
 
     }, err => {
     	

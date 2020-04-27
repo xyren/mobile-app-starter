@@ -18,8 +18,10 @@ import { ForgotPasswordPage } from '../pages/common/forgot-password/forgot-passw
 // Private pages - user should be logged-in
 import { HomePage } from '../pages/private/home/home';
 import { LogoutPage } from '../pages/private/logout/logout';
-import { UserProfilePage } from '../pages/private/user-profile/user-profile';
-import { UserProfileEditPage } from '../pages/private/user-profile-edit/user-profile-edit';
+
+import { UserProfilePage } from '../pages/private/profile/user-profile/user-profile';
+import { UserProfileEditPage } from '../pages/private/profile/user-profile-edit/user-profile-edit';
+
 import { ChangePasswordPage } from '../pages/private/change-password/change-password';
 import { AdminMenuPage } from '../pages/private/admin-menu/admin-menu';
 
@@ -37,6 +39,15 @@ import { InvitationDeletePage } from '../pages/private/administrative/invitation
 
 import { UserListPage } from '../pages/private/administrative/user/user-list/user-list';
 import { UserViewPage } from '../pages/private/administrative/user/user-view/user-view';
+import { UserAddPage } from '../pages/private/administrative/user/user-add/user-add';
+import { UserEditPage } from '../pages/private/administrative/user/user-edit/user-edit';
+import { UserBlockPage } from '../pages/private/administrative/user/user-block/user-block';
+
+import { PageListPage } from '../pages/private/administrative/page/page-list/page-list';
+import { PageViewPage } from '../pages/private/administrative/page/page-view/page-view';
+import { PageAddPage } from '../pages/private/administrative/page/page-add/page-add';
+import { PageEditPage } from '../pages/private/administrative/page/page-edit/page-edit';
+import { PageDeletePage } from '../pages/private/administrative/page/page-delete/page-delete';
 
 
 // Custom Components
@@ -78,6 +89,15 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
 
     UserListPage,
     UserViewPage,
+    UserAddPage,
+    UserEditPage,
+    UserBlockPage,
+
+    PageListPage,
+    PageViewPage,
+    PageAddPage,
+    PageEditPage,
+    PageDeletePage,
 
     MainMenuComponent,
     PageHeaderComponent,
@@ -120,6 +140,15 @@ import { CommonServiceProvider } from '../providers/common-service/common-servic
 
     UserListPage,
     UserViewPage,
+    UserAddPage,
+    UserEditPage,
+    UserBlockPage,
+
+    PageListPage,
+    PageViewPage,
+    PageAddPage,
+    PageEditPage,
+    PageDeletePage,
 
   ],
   providers: [

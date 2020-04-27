@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { HomePage } from '../../pages/private/home/home';
 // import { ViewPostPage } from '../../pages/common/view-post/view-post';
-import { UserProfilePage } from '../../pages/private/user-profile/user-profile';
+import { UserProfilePage } from '../../pages/private/profile/user-profile/user-profile';
 // import { NotificationPage } from '../../pages/common/notification/notification';
 // import { SettingsPage } from '../../pages/common/settings/settings';
 // import { OfficeMatesPage } from '../../pages/common/office-mates/office-mates';

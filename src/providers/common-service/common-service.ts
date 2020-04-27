@@ -33,13 +33,18 @@ export class CommonServiceProvider {
 
   /**
    * Username validation
-   * @param  {string}   username
+   * @param  {string} username
    * @return {boolean}
    */
   validUsername(username: string) {
     return /^[0-9a-zA-Z]+$/.test(username);
   }
-
+  
+  /**
+    * Toast Success
+    * @param  {string} msg
+    * @return {null}
+    */
   toastSuccess(msg: string = 'Request successfully process.', duration: number = 1500) {
   	return this.toastCtrl.create({
 	    message: msg,
@@ -48,7 +53,11 @@ export class CommonServiceProvider {
       cssClass: 'toast-success'
 	  });
   }
-	
+	/**
+    * Toast Error 
+    * @param {string}
+    * @return {null}
+    */
 	toastError(msg: string = 'All fields requried', duration: number = 2000) {
   	this.toastCtrl.create({
       message: 'Error: ' + msg,
@@ -58,6 +67,11 @@ export class CommonServiceProvider {
 		return;
 	 }
 
+   /**
+    * Toast Error handler after submit
+    * @param  {object} error
+    * @return {object}
+    */
   toastErrorSubmit(error) {
     if (error.code === Parse.Error.CONNECTION_FAILED)
     	return this.toastError("Couldn't even connect to the server!");
@@ -65,7 +79,64 @@ export class CommonServiceProvider {
     return this.toastError(error.message);
   }
 
+  /**
+   * Save the User Info after Login-in
+   * @param  {object} request
+   * @return {null}
+   */
   initializeActiveUser(request) {
+
+    // Main Admin
+    // if (request.get('role') === '10') {
+
+    // }
+
+    // let allAccess = this.getAllAccess();
+
+
+    // let access = [];
+    // allAccess.forEach(function (options) {
+    //   options.options.forEach(function (option, index) {
+    //       access.push(option.value);
+    //   });
+    // });
+
+    // console.log(access);
+    // return;
+
+    // const roleId = request.get('role');
+
+    // // parse query search for Role
+    // const RoleAccess = Parse.Object.extend("RoleAccess");
+    // const query = new Parse.Query(RoleAccess);
+
+    // query.equalTo('objectId', roleId);
+    // return query.first().then(results => {
+
+    //   if (results) {
+
+    //     // get all role access based.
+
+    //   } else {
+    //     return this.service.toastError('Invitation data not found.');
+    //   }
+    // })
+    // .catch(error => {
+    //   console.log('error find ', error);
+    //   loading.dismiss();
+    //   loading.onDidDismiss(() => {
+    //     return this.service.toastErrorSubmit(error);
+    //   });
+    // });
+  
+
+
+
+
+
+
+
+
     this.storage.set('user',{
       'id': request.id,
       'username': request.get('username'),
@@ -73,8 +144,17 @@ export class CommonServiceProvider {
       'email': request.get('email'),
       'session': request,
     });
+
+    // get the user role acces in server
+    // Parse
+
   }
 
+  /**
+   * Handler to check if the Key is in Sync-Error via local storage
+   * @param  {string} key
+   * @return {any}
+   */
   inSyncError(key: string) {
     let syncError = this.storage.get('sync-error');
     return syncError.then((val) => {
@@ -90,6 +170,11 @@ export class CommonServiceProvider {
     });
   }
 
+  /**
+   * Handler to save the Key in Sync-Error via local storage
+   * @param  {string} key
+   * @return {null}
+   */
   SaveSyncError(key: string) {
     let syncError = this.storage.get('sync-error');
     syncError.then((val) => {
@@ -106,6 +191,11 @@ export class CommonServiceProvider {
     });
   }
 
+  /**
+   * Handler to remove the Key in Sync-Error via local storage
+   * @param  {string} key
+   * @return {null}
+   */
   RemoveSyncError(key: string) {
     let syncError = this.storage.get('sync-error');
     syncError.then((val) => {
@@ -123,6 +213,10 @@ export class CommonServiceProvider {
     });
   }
 
+  /**
+   * Permissions in whole Application
+   * @return {any}
+   */
   getAllAccess() {
 
     const rolesAccess = [
@@ -139,6 +233,9 @@ export class CommonServiceProvider {
         name: 'Invitation Management', access: false, 
         options: [
           {name: 'Send Invitation', value: 'invitation-send', access: false},
+          {name: 'Resend Invitation', value: 'invitation-resend', access: false},
+          {name: 'Edit Invitation', value: 'invitation-edit', access: false},
+          {name: 'Delete Invitation', value: 'invitation-delete', access: false},
         ]
       },
       {
@@ -153,11 +250,11 @@ export class CommonServiceProvider {
       {
         name: 'Post Content', access: false, 
         options: [
-          {name: 'Can Post Survey', subtitle: 'List all users', value: 'role-list', access: false},
-          {name: 'Can Post News', subtitle: 'Able to add new user', value: 'role-add', access: false},
-          {name: 'Can Post Announcement', subtitle: 'Update some users information', value: 'role-edit', access: false},
-          {name: 'Can Post Gallery', subtitle: 'Can banned users on lock theire account', value: 'role-delete', access: false},
-          {name: 'Can Post Upcoming Events', subtitle: 'Can banned users on lock theire account', value: 'role-delete', access: false},
+          {name: 'Post Survey', subtitle: 'User can post survey', value: 'post-survey', access: false},
+          {name: 'Post News', subtitle: 'User can post a news', value: 'post-news', access: false},
+          {name: 'Post Announcement', subtitle: 'Allow the user to make an Announcement', value: 'post-announcement', access: false},
+          {name: 'Post Gallery', subtitle: 'User can upload photos and gallery', value: 'post-gallery', access: false},
+          {name: 'Post Upcoming Events', subtitle: 'Able to post upcoming events', value: 'post-event', access: false},
         ]
       },
     ];

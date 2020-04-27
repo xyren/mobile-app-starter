@@ -143,6 +143,7 @@ export class RegisterInvitationPage {
     user.set('fullname', this.fullname);
     user.set('position', this.position);
     user.set('email', this.email);
+    user.set('email_read', this.email); // we need this bec original email field was hidden at pulling data
     user.set('invitationCode', this.code);
     user.set('role', this.role);
     user.set('status', 1);

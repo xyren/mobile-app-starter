@@ -29,6 +29,7 @@ Public Access
 * Logout
 * Forgot Password
 * Homepage
+* Register via inivitation
 
 Private Access Level (User should logged-in)
 * Change Password
@@ -67,9 +68,12 @@ SuperAdmin Access (Fixed username and password see configuration file)
 * Format Invitation
 
 
+### TODO:
+Other menu apply permission acces - but need to match current logged in user bind to roles Access 
+Page Admin(CRUD)
 
 
-NOTES:
+### NOTES:
 DO NOT create a codes under the constructor - bec its always loaded on the startup of application - that will make your apps crash - sometimes
 
 
